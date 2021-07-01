@@ -304,4 +304,4 @@ async def on_command_error( ctx, error ):
 #client.run (settings['TOKEN'])
 token = os.environ.get('BOT_TOKEN')
 
-bot.run(str(token))
+client.run(str(token))
