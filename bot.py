@@ -88,7 +88,7 @@ async def help( ctx ):
 	emb.add_field( name = f'{prefix}kick', value = '```Выгнать участника```' )
 	emb.add_field( name = f'{prefix}ban', value = '```Забанить участника```' )
 	emb.add_field( name = f'{prefix}time', value = '```Посмотреть время```' )
-	emb.add_field( name = f'{prefix}pidor', value = '```Узнать пидоров сервера```' )
+	emb.add_field( name = f'{prefix}pidors', value = '```Узнать пидоров сервера```' )
 	emb.add_field( name = f'{prefix}pizdec', value = '```Ещё чё то```' )
 
 	await ctx.send( embed = emb )
