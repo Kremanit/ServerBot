@@ -10,7 +10,6 @@ import os
 from discord.ext import commands, tasks
 from discord.ext.commands import Bot
 from discord import client
-from PIL import Image, ImageDraw, ImageFont
 from io import BytesIO
 from config import settings
 from discord.utils import get
