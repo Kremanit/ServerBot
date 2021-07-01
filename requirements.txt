@@ -6,3 +6,4 @@ asyncio
 config
 ipc
 jishaku
+requests
