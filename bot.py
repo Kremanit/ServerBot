@@ -72,10 +72,6 @@ async def pidors(ctx,member:discord.Member = None, guild: discord.Guild = None):
  	
 	await ctx.send( embed = emb )
 
-@client.command()
-async def pizdec(ctx):
-    await ctx.send('Реально пиздец')
-
 #Command help
 @client.command( pass_context = True )
 
@@ -89,7 +85,7 @@ async def help( ctx ):
 	emb.add_field( name = f'{prefix}ban', value = '```Забанить участника```' )
 	emb.add_field( name = f'{prefix}time', value = '```Посмотреть время```' )
 	emb.add_field( name = f'{prefix}pidors', value = '```Узнать пидоров сервера```' )
-	emb.add_field( name = f'{prefix}pizdec', value = '```Ещё чё то```' )
+	emb.add_field( name = f'{prefix}info', value = '```Посмотреть свой профиль```' )
 
 	await ctx.send( embed = emb )
 
