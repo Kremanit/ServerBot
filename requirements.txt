@@ -5,6 +5,6 @@ chardet
 asyncio
 config
 ipc
-json
 os
 PIL
+jishaku
