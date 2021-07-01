@@ -5,5 +5,4 @@ chardet
 asyncio
 config
 ipc
-PIL
 jishaku
