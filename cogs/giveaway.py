@@ -92,7 +92,6 @@ class Giveaway(commands.Cog):
             emb.set_footer(text = 'Kremanit © 2021', icon_url = self.bot.user.avatar_url)
             emb.set_thumbnail(url = 'https://www.flaticon.com/premium-icon/icons/svg/2867/2429310.svg')
             await ctx.send(embed = emb)
-            await ctx.message.delete()
 
 def setup(bot):
     bot.add_cog(Giveaway(bot))
