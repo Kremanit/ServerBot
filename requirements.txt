@@ -7,3 +7,4 @@ config
 ipc
 jishaku
 requests
+youtube-dl
