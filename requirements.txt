@@ -8,3 +8,4 @@ ipc
 jishaku
 requests
 youtube-dl
+PyNaCl
