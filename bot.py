@@ -58,18 +58,24 @@ async def __help ( ctx ):
     print( f'[Logs:info] Справка по командам была успешно выведена | {prefix}help ' )
 '''
 
-@client.command()
+@client.command( pass_context = True )
 
-async def pidors(ctx,member:discord.Member = None, guild: discord.Guild = None):
+async def music( ctx ):
 	await ctx.message.delete()
 
-	emb = discord.Embed( title = 'ГЛАВНЫЕ ПИДОРАСЫ СЕРВЕРА', colour = discord.Color.purple() )
+	emb = discord.Embed( title = 'Музыкальные команды', colour = discord.Color.purple() )
 
-	emb.add_field( name = f'артем', value = '```ПИДОР```' )
-	emb.add_field( name = f'пика', value = '```ПИДОР```' )
-	emb.add_field( name = f'олег', value = '```ПИДОР```' )
-	emb.add_field( name = f'эдик', value = '```ПИДОР```' )
-	emb.add_field( name = f'артем', value = '```ПИДОР```' )
+	emb.add_field( name = f'play', value = '```Воспроизвести композицию в голосовом канале.```' )
+	emb.add_field( name = f'stop', value = '```Прекращает воспроизведение песни и очищает очередь.```' )
+	emb.add_field( name = f'skip', value = '```Пропустить текущую воспроизводимую композицию.```' )
+	emb.add_field( name = f'queue', value = '```Показать очередь воспроизведения.```' )
+	emb.add_field( name = f'shuffle', value = '```Перемешать очередь воспроизведения.```' )
+	emb.add_field( name = f'repeat', value = '```Установить режим повтора.```' )
+	emb.add_field( name = f'here', value = '```Переместиться в голосовой канал участника.```' )
+	emb.add_field( name = f'volume', value = '```Установить громкость воспроизведения.```' )
+	emb.add_field( name = f'now', value = '```Показать текущую композицию.```' )
+	emb.add_field( name = f'pause', value = '```Поставить воспроизведение на паузу.```' )
+	emb.add_field( name = f'resume', value = '```Продолжить воспроизведение композиции после паузы.```' )
  	
 	await ctx.send( embed = emb )
 
@@ -85,7 +91,7 @@ async def help( ctx ):
 	emb.add_field( name = f'{prefix}kick', value = '```Выгнать участника```' )
 	emb.add_field( name = f'{prefix}ban', value = '```Забанить участника```' )
 	emb.add_field( name = f'{prefix}time', value = '```Посмотреть время```' )
-	emb.add_field( name = f'{prefix}pidors', value = '```Узнать пидоров сервера```' )
+	emb.add_field( name = f'{prefix}music', value = '```Помощь по музыке```' )
 	emb.add_field( name = f'{prefix}info', value = '```Посмотреть свой профиль```' )
 
 	await ctx.send( embed = emb )

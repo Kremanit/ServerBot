@@ -294,9 +294,9 @@ class Music(commands.Cog):
 
         ctx.voice_state.voice = await destination.connect()
 
-    @commands.command(name='summon')
+    @commands.command(name='here')
     @commands.has_permissions(manage_guild=True)
-    async def summon(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
+    async def here(self, ctx: commands.Context, *, channel: discord.VoiceChannel = None):
         """Summons the bot to a voice channel.
         If no channel was specified, it joins your channel.
         """
@@ -440,8 +440,8 @@ class Music(commands.Cog):
         ctx.voice_state.songs.remove(index - 1)
         await ctx.message.add_reaction('✅')
 
-    @commands.command(name='loop')
-    async def loop(self, ctx: commands.Context):
+    @commands.command(name='repeat')
+    async def repeat(self, ctx: commands.Context):
         """Loops the currently playing song.
         Invoke this command again to unloop the song.
         """
