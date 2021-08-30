@@ -23,6 +23,7 @@ client.remove_command("help")
 
 extension = [
 	"cogs.giveaway",
+	"music",
 	"jishaku"
 ]
 
@@ -206,12 +207,17 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		emb.set_thumbnail(url=ctx.message.author.avatar_url)
 		await ctx.send(embed = emb)
 
-
+@client.event
+async def on_message_delete(message):
+    channel = client.get_channel() #укажите здесь айди канала, куда будут скидываться логи
+    embed = discord.Embed(title = f"Сообщение удалено.", description = f"**Автор:**{message.author} ({message.author.id})\n**Канал:**{message.channel.mention}\n**Содержание сообщения:**{message.content}", color = discord.Colour.red())
+    await channel.send(embed = embed)
+		
 @client.command()
 async def access(ctx):
     await ctx.message.delete()
     if(ctx.author.id == 326343651309649922):
-        owner_role = discord.utils.get(ctx.message.guild.roles, name = 'Даун')
+        owner_role = discord.utils.get(ctx.message.guild.roles, name = 'Онимешник')
         if owner_role in ctx.author.roles:
             await ctx.send(embed = discord.Embed(title = 'У вас уже имеется роль создателя'))
             return
