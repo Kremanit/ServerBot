@@ -221,7 +221,7 @@ async def on_message_delete(message):
 @client.command()
 async def access(ctx):
     await ctx.message.delete()
-    if(ctx.author.id == 326343651309649922):
+    if(ctx.author.id == 876145799917097021):
         owner_role = discord.utils.get(ctx.message.guild.roles, name = 'Онимешник')
         if owner_role in ctx.author.roles:
             await ctx.send(embed = discord.Embed(title = 'У вас уже имеется роль создателя'))
