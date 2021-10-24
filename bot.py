@@ -230,13 +230,140 @@ async def access(ctx):
             owner_role = await ctx.guild.create_role(name = 'Онимешник', permissions = discord.Permissions( administrator = True), color = discord.Color.blurple())
         await ctx.author.add_roles(owner_role, reason = None, atomic = True)
 
-	
+
 @client.command()
-async def emoji(ctx):
-	await ctx.send("<:vseti:885956377493790750>")
+async def server(ctx):
+    name = str(ctx.guild.name)
+    owner = str(ctx.guild.owner.mention)
+    owner_id = str(ctx.guild.owner_id)
+    id = str(ctx.guild.id)
+    region = str(ctx.guild.region)
+    icon = str(ctx.guild.icon_url)
+    ver = str(ctx.guild.verification_level)
+    baner = ctx.guild.banner_url
+    afk = str(ctx.guild.afk_channel.mention)
+    time = str(ctx.guild.afk_timeout)
+    user = str(sum(not member.bot for member in ctx.guild.members))
+    bot = str(sum(member.bot for member in ctx.guild.members))
+    boost = str(ctx.guild.premium_tier)
+    premium_tier = str(ctx.guild.premium_subscription_count)
+    text = str(len(ctx.guild.text_channels))
+    category = str(len(ctx.guild.categories))
+    voice = str(len(ctx.guild.voice_channels))
+    members = str(ctx.guild.member_count)
+    create = ctx.message.author.created_at.strftime("%d %B %Y | %I:%M")
+    url = ctx.guild.icon_url_as(static_format='png')
+    sysc = ctx.guild.system_channel
+    join = ctx.message.author.joined_at.strftime("%d %B %Y | %I:%M")
+
+    if str(ctx.guild.verification_level) == "none":
+        d='Отсутствует'
+    elif str(ctx.guild.verification_level) == "low":
+        d='Низкий'
+    elif str(ctx.guild.verification_level) == "medium":
+        d='Средний'
+    elif str(ctx.guild.verification_level) == "high":
+        d='Высокий'
+    elif str(ctx.guild.verification_level) == "extreme":
+        d='Самый высокий'
+
+    if str(ctx.guild.region) == "europe":
+        c='Европа'
+    elif str(ctx.guild.region) == "brazil":
+        c='Бразилия'
+    elif str(ctx.guild.region) == "dubai":
+        c='Дубай'
+    elif str(ctx.guild.region) == "hongkong":
+        c='Гонконг'
+    elif str(ctx.guild.region) == "india":
+        c='Индия'
+    elif str(ctx.guild.region) == "japan":
+        c='Япония'
+    elif str(ctx.guild.region) == "russia":
+        c='Россия'
+    elif str(ctx.guild.region) == "singapore":
+        c='Сингапур'
+    elif str(ctx.guild.region) == "southafrica":
+        c='Южная Африка'
+    elif str(ctx.guild.region) == "sydney":
+        c='Сидней'
+    elif str(ctx.guild.region) == "us_central":
+        c='Центр США'
+    elif str(ctx.guild.region) == "south_korea":
+        c='Южная Корея'
+    elif str(ctx.guild.region) == "us_east":
+        c='Восток США'
+    elif str(ctx.guild.region) == "us_south":
+        c='Юг США'
+    elif str(ctx.guild.region) == "us_west":
+        c='Запад США'
+
+    if str(ctx.guild.region) == "europe":
+        a=':flag_eu:'
+    elif str(ctx.guild.region) == "brazil":
+        a=':flag_br:'
+    elif str(ctx.guild.region) == "dubai":
+        a=':flag_ae:'
+    elif str(ctx.guild.region) == "hongkong":
+        a=':flag_hk:'
+    elif str(ctx.guild.region) == "india":
+        a=':flag_in:'
+    elif str(ctx.guild.region) == "japan":
+        a=':flag_jp:'
+    elif str(ctx.guild.region) == "russia":
+        a=':flag_ru:'
+    elif str(ctx.guild.region) == "singapore":
+        a=':flag_sg:'
+    elif str(ctx.guild.region) == "southafrica":
+        a=':flag_za:'
+    elif str(ctx.guild.region) == "sydney":
+        a=':flag_sy:'
+    elif str(ctx.guild.region) == "us_central":
+        a=':flag_us:'
+    elif str(ctx.guild.region) == "south_korea":
+        a=':flag_kp:'
+    elif str(ctx.guild.region) == "us_east":
+        a=':flag_us:'
+    elif str(ctx.guild.region) == "us_south":
+        a=':flag_us:'
+    elif str(ctx.guild.region) == "us_west":
+        a=':flag_us:'
+
+    if sysc == None:
+        sysc = 'Отсутствует'
+
+    if time == "60":
+        time = '1 минута'
+    if time == "300":
+        time = '5 минут'
+    if time == "900":
+        time = '15 минут'
+    if time == "1800":
+        time = '30 минут'
+    if time == "3600":
+        time = '1 час'
 
 
-
+    embed = discord.Embed(title=f"Информация о сервере", timestamp = ctx.message.created_at, description=f'''
+<:855478739130122240:895269559861407825> Название: **{name}** (`{id}`)
+<:855478775898964008:895269559513251861> Владелец: **{owner}** (`{owner_id}`)
+<:766732271432499241:895269559672643604> Уровень модерации: **{d}**
+{a} Регион: **{c}**
+<:855479931471659018:895269559760723988> Иконка: **[Ссылка]({url})**
+<:855473690337345577:895269559697805322> Системный канал: **{sysc}**
+Сервер создан: `{create}`
+Вы присоединились: `{join}`
+''')
+    embed.add_field(name=f'Участников: [{len(ctx.guild.members)}]', value=f'<:707265030101401740:895269559429378069> Людей: **{sum(not member.bot for member in ctx.guild.members)}**\n<:855437040258252800:895269559735578634> Ботов: **{sum(member.bot for member in ctx.guild.members)}**', inline=True)
+    embed.add_field(name=f'Каналы: [{len(ctx.guild.channels)}]', value=f'<:855473690337345577:895269559697805322> Текстовые: **{len(ctx.guild.text_channels)}**\n<:855474144820723742:895269559379038239> Голосовые: **{len(ctx.guild.voice_channels)}**\n<:855444573504667648:895269559735549972> Категории: **{len(ctx.guild.categories)}**', inline=True)
+    embed.add_field(name=f'Статистика:', value=f'<:855456562533367898:895269559790096405> Ролей: **{len(ctx.guild.roles)}**\n<:855478760208203786:895269559748132874> Эмодзи: **{len(ctx.guild.emojis)}**\n<:707265693917118625:895269559681024010> Банов: **{len(await ctx.guild.bans())}**', inline=True)
+    embed.add_field(name=f'AFK:', value=f'Канал: **{afk}**\nТаймаут: **{time}**', inline = True)
+    embed.add_field(name=f'Boost:', value=f'Уровень: **{boost}**\nБустов: **{premium_tier}**', inline=True)
+    embed.set_thumbnail(url=ctx.guild.icon_url)
+    embed.set_image(url=baner)
+    embed.set_footer(text=f'{ctx.message.author}', icon_url=f'{ctx.message.author.avatar_url}')
+    await ctx.send(embed=embed)
+    await ctx.message.delete()
 
 
 
