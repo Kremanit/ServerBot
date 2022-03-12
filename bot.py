@@ -213,36 +213,6 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		await ctx.send(embed = emb)
 
 
-@commands.has_any_role('Owner', 'Head Dev', 'Head Admin', 'Admins', 'Moderator', 'Community Helper', 'Team Leader', 'Head Team Member')
-async def serverinfo(self, ctx):
-
-    role_count = len(ctx.guild.roles)
-    list_of_bots = [bot.mention for bot in ctx.guild.members if bot.bot]
-    staff_roles = ["Owner", "Head Dev", "Dev", "Head Admin", "Admins", "Moderators", "Community Helpers", "Members"]
-        
-    embed2 = discord.Embed(timestamp=ctx.message.created_at, color=ctx.author.color)
-    embed2.add_field(name='Name', value=f"{ctx.guild.name}", inline=False)
-    embed2.add_field(name='Owner', value=f"Mekasu, Kastien", inline=False)
-    embed2.add_field(name='Verification Level', value=str(ctx.guild.verification_level), inline=False)
-    embed2.add_field(name='Highest role', value=ctx.guild.roles[-2], inline=False)
-    embed2.add_field(name='Contributers:', value="None")
-
-    for r in staff_roles:
-        role = discord.utils.get(ctx.guild.roles, name=r)
-        if role:
-            members = '\n'.join([member.name for member in role.members]) or "None"
-            embed2.add_field(name=role.name, value=members)
-
-    embed2.add_field(name='Number of roles', value=str(role_count), inline=False)
-    embed2.add_field(name='Number Of Members', value=ctx.guild.member_count, inline=False)
-    embed2.add_field(name='Bots:', value=(', '.join(list_of_bots)))
-    embed2.add_field(name='Created At', value=ctx.guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=False)
-    embed2.set_thumbnail(url=ctx.guild.icon_url)
-    embed2.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
-    embed2.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
-
-    channel = self.bot.get_channel(staff_commands)
-    await channel.send(embed=embed2)
 
 
 @client.event
