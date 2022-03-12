@@ -213,31 +213,20 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		await ctx.send(embed = emb)
 
 
-
 @client.command()
+@commands.guild_only()
 async def serverinfo(ctx):
-  name = str(ctx.guild.name)
-  description = str(ctx.guild.description)
-
-  owner = str(ctx.guild.owner)
-  id = str(ctx.guild.id)
-  region = str(ctx.guild.region)
-  memberCount = str(ctx.guild.member_count)
-
-  icon = str(ctx.guild.icon_url)
-   
-  embed = discord.Embed(
-      title=name + " Server Information",
-      description=description,
-      color=discord.Color.blue()
+    embed = discord.Embed(
+        color = ctx.guild.owner.top_role.color
     )
-  embed.set_thumbnail(url=icon)
-  embed.add_field(name="Owner", value=owner, inline=True)
-  embed.add_field(name="Server ID", value=id, inline=True)
-  embed.add_field(name="Region", value=region, inline=True)
-  embed.add_field(name="Member Count", value=memberCount, inline=True)
+    text_channels = len(ctx.guild.text_channels)
+    voice_channels = len(ctx.guild.voice_channels)
+    categories = len(ctx.guild.categories)
+    channels = text_channels + voice_channels
+    embed.set_thumbnail(url = str(ctx.guild.icon_url))
+    embed.add_field(name = f"Information About **{ctx.guild.name}**: ", value = f":white_small_square: ID: **{ctx.guild.id}** \n:white_small_square: Owner: **{ctx.guild.owner}** \n:white_small_square: Location: **{ctx.guild.region}** \n:white_small_square: Creation: **{ctx.guild.created_at.strftime(format)}** \n:white_small_square: Members: **{ctx.guild.member_count}** \n:white_small_square: Channels: **{channels}** Channels; **{text_channels}** Text, **{voice_channels}** Voice, **{categories}** Categories \n:white_small_square: Verification: **{str(ctx.guild.verification_level).upper()}** \n:white_small_square: Features: {', '.join(f'**{x}**' for x in ctx.guild.features)} \n:white_small_square: Splash: {ctx.guild.splash}")
+    await ctx.send(embed=embed)
 
-  await ctx.send(embed=embed)
 
 @client.event
 async def on_message_delete(message):
