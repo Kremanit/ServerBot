@@ -213,7 +213,33 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		await ctx.send(embed = emb)
 
 
+@commands.command()
+async def serverinfo(ctx,member:discord.Member = None, guild: discord.Guild = None):
+	await ctx.message.delete()
+	if member == None:
+    emb = discord.Embed(timestamp=ctx.message.created_at, color=ctx.author.color)
+    emb.add_field(name='Name', value=f"{ctx.guild.name}", inline=False)
+    emb.add_field(name='Owner', value=f"Mekasu, Kastien", inline=False)
+    emb.add_field(name='Verification Level', value=str(ctx.guild.verification_level), inline=False)
+    emb.add_field(name='Highest role', value=ctx.guild.roles[-2], inline=False)
+    emb.add_field(name='Contributers:', value="None")
 
+    for r in staff_roles:
+        role = discord.utils.get(ctx.guild.roles, name=r)
+        if role:
+            members = '\n'.join([member.name for member in role.members]) or "None"
+            embed2.add_field(name=role.name, value=members)
+
+    emb.add_field(name='Number of roles', value=str(role_count), inline=False)
+    emb.add_field(name='Number Of Members', value=ctx.guild.member_count, inline=False)
+    emb.add_field(name='Bots:', value=(', '.join(list_of_bots)))
+    emb.add_field(name='Created At', value=ctx.guild.created_at.__format__('%A, %d. %B %Y @ %H:%M:%S'), inline=False)
+    emb.set_thumbnail(url=ctx.guild.icon_url)
+    emb.set_author(name=ctx.author.name, icon_url=ctx.author.avatar_url)
+    emb.set_footer(text=self.bot.user.name, icon_url=self.bot.user.avatar_url)
+
+    channel = self.bot.get_channel(staff_commands)
+    await channel.send(embed=emb)
 
 
 @client.event
