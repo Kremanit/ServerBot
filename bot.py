@@ -23,6 +23,7 @@ client.remove_command("help")
 
 extension = [
 	"cogs.giveaway",
+	"cogs.levels",
 	"jishaku"
 ]
 
