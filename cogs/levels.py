@@ -73,6 +73,7 @@ class Levelsys(commands.Cog):
 
   @commands.command(name="rank")
   async def rank(self, ctx: commands.Context, user: Optional[discord.Member]):
+    await ctx.message.delete()
     userr = user or ctx.author
 
     with open("levels.json", "r") as f:
@@ -130,6 +131,7 @@ class Levelsys(commands.Cog):
 
   @commands.command(name="leaderboard")
   async def leaderboard(self, ctx, range_num=5):
+    await ctx.message.delete()
     with open("levels.json", "r") as f:
       data = json.load(f)
 
