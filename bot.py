@@ -214,7 +214,7 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 
 @client.event
 async def on_message_delete(message):
-    channel = client.get_channel() #укажите здесь айди канала, куда будут скидываться логи
+    channel = client.get_channel(880761120447664158) #укажите здесь айди канала, куда будут скидываться логи
     embed = discord.Embed(title = f"Сообщение удалено.", description = f"**Автор:**{message.author} ({message.author.id})\n**Канал:**{message.channel.mention}\n**Содержание сообщения:**{message.content}", color = discord.Colour.red())
     await channel.send(embed = embed)
 		
