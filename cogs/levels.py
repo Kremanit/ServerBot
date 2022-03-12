@@ -8,7 +8,7 @@ from easy_pil import Editor, load_image_async, Font
 
 #if you want to give role to the user at any specific level upgrade then you can do like this
 #enter the name of the role in a list
-level = ["Level-5+", "Level-10+", "Level-15+"]
+level = ["Новичок", "Начинающий", "Легенда"]
 
 #add the level number at which you want to give the role
 level_num = [5, 10, 15]
