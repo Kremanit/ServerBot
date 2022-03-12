@@ -213,21 +213,7 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		await ctx.send(embed = emb)
 
 
-@client.command()
-async def serverinfo(ctx):
-   role_count = len(ctx.guild.roles)
-   list_of_bots = [bot.mention for bot in ctx.guild.members if bot.bot]
 
-   serverinfoEmbed - discord. Embed(timestamp ctx.message.created_at, color ctx.author.color)
-   serverinfoEmbed.add_field(name-'Name', value f"{ctx.guildname}", inline-False)
-   serverinfoEmbed.add_field(name-'Member Count', value-ctx.guild.member_count, inline-False)
-   serverinfoEmbed.add_field(name-'Verification Level', value-str(ctx.guild.verification_level), inline-False)
-   serverinfoEmbed.add_field(name-'Highest Role', value-ctx.guild.roles[-2], inline-False)
-   serverinfoEmbed.add_field(name="Number of Roles', value-str(role_count), inline-False)
-   serverinfoEmbed.add_field(name-'Bots', value-', '.join(list_of_bots), inline-False)
-   serverinfoEmbed.add_field(name-'Name', value f"{ctx.guildname}", inline-False)
-   serverinfoEmbed.add_field(name-'Name', value f"{ctx.guildname}", inline False)
-  await ctx.send(embed serverinfoEmbed)
 
 
 @client.event
