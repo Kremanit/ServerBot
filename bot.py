@@ -75,7 +75,7 @@ async def help( ctx ):
 	emb.add_field( name = f'{prefix}info', value = '```Посмотреть свой профиль```' )
 
 	await ctx.send( embed = emb )
-
+'''
 @client.event
 
 async def on_member_join (member):
@@ -84,7 +84,61 @@ async def on_member_join (member):
     role = discord.utils.get (member.guild.roles, id=813894164949237820)
     print ('user join the servers')
     await member.add_roles( role )
-    await channel.send( embed = discord.Embed( description = f'```xl Пользователь {member.name}, присоединился к нам!```', color = 0x2D3136))
+    await channel.send( embed = discord.Embed( description = f'```Пользователь {member.name}, присоединился к нам!```', color = 0x2D3136))
+'''
+
+@bot.event
+async def on_member_join(member):
+
+  #add the channel id in which you want to send the card
+  channel = bot.get_channel(831397576107622420)
+
+  #if you want to give any specific roles to any user then you can add like this
+  role = discord.utils.get (member.guild.roles, id=813894164949237820)
+  await member.add_roles(role)
+
+  pos = sum(m.joined_at < member.joined_at for m in member.guild.members if m.joined_at is not None)
+
+  if pos == 1:
+    te = "st"
+  elif pos == 2:
+    te = "nd"
+  elif pos == 3:
+    te = "rd"
+  else: te = "th"
+
+  background = Editor("wlcbg.jpg")
+  profile_image = await load_image_async(str(member.avatar_url))
+
+  profile = Editor(profile_image).resize((150, 150)).circle_image()
+  poppins = Font.poppins(size=50, variant="bold")
+
+  poppins_small = Font.poppins(size=20, variant="light")
+
+  background.paste(profile, (325, 90))
+  background.ellipse((325, 90), 150, 150, outline="gold", stroke_width=4)
+
+  background.text((400, 260), f"Добро пожаловать {member.guild.name}!", color="white", font=poppins, align="center")
+  background.text((400, 325), f"{member.name}#{member.discriminator}", color="white", font=poppins_small, align="center")
+  background.text((400, 360), f"Ты {pos}{te} участник!", color="#0BE7F5", font=poppins_small, align="center")
+
+  file = File(fp=background.image_bytes, filename="wlcbg.jpg")
+
+  #if you want to message more message then you can add like this
+  await channel.send(f"Хэй {member.mention}! Добро пожаловать **{member.guild.name} не забудьте прочитать правила <#885152158599770183> !**")
+
+  #for sending the card
+  await channel.send(file=file)
+
+@bot.event
+async def on_member_remove(member):
+  channel = bot.get_channel(831397576107622420)
+
+  await channel.send(f"{member.name} выписан из Test ")
+
+
+
+
 
 # Clear message
 @client.command( pass_context = True )
