@@ -119,14 +119,13 @@ async def on_member_join(member):
   background.paste(profile, (325, 90))
   background.ellipse((325, 90), 150, 150, outline="gold", stroke_width=4)
 
-  background.text((400, 260), f"Welcome {member.guild.name}!", color="white", font=poppins, align="center")
-  background.text((400, 325), f"{member.name}#{member.discriminator}", color="white", font=poppins_small, align="center")
-  background.text((400, 360), f"You Are The {pos}{te} member!", color="#0BE7F5", font=poppins_small, align="center")
+  background.text((400, 260), f"Welcome {member.name}#{member.discriminator}!", color="white", font=poppins, align="center")
+  background.text((400, 325), f"You Are The {pos}{te} member!", color="#0BE7F5", font=poppins_small, align="center")
 
   file = File(fp=background.image_bytes, filename="wcbg.jpg")
 
   #if you want to message more message then you can add like this
-  await channel.send(f"Хэй {member.mention}! Добро пожаловать  на **{member.guild.name} не забудьте прочитать правила <#755472612054008041> !**")
+  await channel.send(f" Добро пожаловать {member.mention}! Не забудьте прочитать правила <#755472612054008041> !**")
 
   #for sending the card
   await channel.send(file=file)
