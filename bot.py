@@ -120,7 +120,7 @@ async def on_member_join(member):
   background.ellipse((325, 90), 150, 150, outline="gold", stroke_width=4)
 
   background.text((400, 260), f"Welcome {member.name}#{member.discriminator}!", color="white", font=poppins, align="center")
-  background.text((400, 325), f"You Are The {pos}{te} member!", color="#2F2D4C", font=poppins_medium, align="center")
+  background.text((400, 325), f"You Are The {pos}{te} member!", color="#2F2D4C", font=poppins_small, align="center")
 
   file = File(fp=background.image_bytes, filename="wcbg.jpg")
 
