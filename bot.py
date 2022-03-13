@@ -108,7 +108,7 @@ async def on_member_join(member):
     te = "rd"
   else: te = "th"
 
-  background = Editor("wlcbg.jpg")
+  background = Editor("wcbg.jpg")
   profile_image = await load_image_async(str(member.avatar_url))
 
   profile = Editor(profile_image).resize((150, 150)).circle_image()
