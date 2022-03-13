@@ -13,6 +13,7 @@ from discord import client
 from io import BytesIO
 from config import settings
 from discord.utils import get
+from easy_pil import Editor, load_image_async, Font
 
 prefix = settings['PREFIX']
 
