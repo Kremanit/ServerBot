@@ -91,7 +91,7 @@ async def on_member_join (member):
 async def on_member_join(member):
 
   #add the channel id in which you want to send the card
-  channel = bot.get_channel(831397576107622420)
+  channel = client.get_channel(831397576107622420)
 
   #if you want to give any specific roles to any user then you can add like this
   role = discord.utils.get (member.guild.roles, id=813894164949237820)
@@ -132,7 +132,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_member_remove(member):
-  channel = bot.get_channel(831397576107622420)
+  channel = client.get_channel(831397576107622420)
 
   await channel.send(f"{member.name} выписан из Test ")
 
