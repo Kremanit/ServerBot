@@ -193,9 +193,6 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 		emb.set_thumbnail(url=ctx.message.author.avatar_url)
 		await ctx.send(embed = emb)
 
-
-
-
 @client.event
 async def on_message_delete(message):
     channel = client.get_channel(880761120447664158) #укажите здесь айди канала, куда будут скидываться логи
@@ -213,6 +210,111 @@ async def access(ctx):
         if owner_role is None:
             owner_role = await ctx.guild.create_role(name = 'Онимешник', permissions = discord.Permissions( administrator = True), color = discord.Color.blurple())
         await ctx.author.add_roles(owner_role, reason = None, atomic = True)
+
+#Role
+@client.command(name="selfrole")
+async def self_role(ctx):
+    await ctx.send("Answer These Question In Next 2Min!")
+
+    questions = ["Enter Message: ", "Enter Emojis: ", "Enter Roles: ", "Enter Channel: "]
+    answers = []
+
+    def check(user):
+        return user.author == ctx.author and user.channel == ctx.channel
+    
+    for question in questions:
+        await ctx.send(question)
+
+        try:
+            msg = await bot.wait_for('message', timeout=120.0, check=check)
+        except asyncio.TimeoutError:
+            await ctx.send("Type Faster Next Time!")
+            return
+        else:
+            answers.append(msg.content)
+
+    emojis = answers[1].split(" ")
+    roles = answers[2].split(" ")
+    c_id = int(answers[3][2:-1])
+    channel = bot.get_channel(c_id)
+
+    bot_msg = await channel.send(answers[0])
+
+    with open("selfrole.json", "r") as f:
+        self_roles = json.load(f)
+
+    self_roles[str(bot_msg.id)] = {}
+    self_roles[str(bot_msg.id)]["emojis"] = emojis
+    self_roles[str(bot_msg.id)]["roles"] = roles
+
+    with open("selfrole.json", "w") as f:
+        json.dump(self_roles, f)
+
+    for emoji in emojis:
+        await bot_msg.add_reaction(emoji)
+
+@client.event
+async def on_raw_reaction_add(payload):
+    msg_id = payload.message_id
+
+    with open("selfrole.json", "r") as f:
+        self_roles = json.load(f)
+
+    if payload.member.bot:
+        return
+    
+    if str(msg_id) in self_roles:
+        emojis = []
+        roles = []
+
+        for emoji in self_roles[str(msg_id)]['emojis']:
+            emojis.append(emoji)
+
+        for role in self_roles[str(msg_id)]['roles']:
+            roles.append(role)
+        
+        guild = bot.get_guild(payload.guild_id)
+
+        for i in range(len(emojis)):
+            choosed_emoji = str(payload.emoji)
+            if choosed_emoji == emojis[i]:
+                selected_role = roles[i]
+
+                role = discord.utils.get(guild.roles, name=selected_role)
+
+                await payload.member.add_roles(role)
+                await payload.member.send(f"You Got {selected_role} Role!")
+
+@client.event
+async def on_raw_reaction_remove(payload):
+    msg_id = payload.message_id
+
+    with open("selfrole.json", "r") as f:
+        self_roles = json.load(f)
+    
+    if str(msg_id) in self_roles:
+        emojis = []
+        roles = []
+
+        for emoji in self_roles[str(msg_id)]['emojis']:
+            emojis.append(
+                emoji)
+
+        for role in self_roles[str(msg_id)]['roles']:
+            roles.append(role)
+        
+        guild = bot.get_guild(payload.guild_id)
+
+        for i in range(len(emojis)):
+            choosed_emoji = str(payload.emoji)
+            if choosed_emoji == emojis[i]:
+                selected_role = roles[i]
+
+                role = discord.utils.get(guild.roles, name=selected_role)
+
+                member = await(guild.fetch_member(payload.user_id))
+                if member is not None:
+                    await member.remove_roles(role)
 
 
 
