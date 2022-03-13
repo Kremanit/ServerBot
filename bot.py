@@ -126,7 +126,7 @@ async def on_member_join(member):
   file = File(fp=background.image_bytes, filename="wlcbg.jpg")
 
   #if you want to message more message then you can add like this
-  await channel.send(f"Хэй {member.mention}! Добро пожаловать **{member.guild.name} не забудьте прочитать правила <#885152158599770183> !**")
+  await channel.send(f"Хэй {member.mention}! Добро пожаловать  на **{member.guild.name} не забудьте прочитать правила <#755472612054008041> !**")
 
   #for sending the card
   await channel.send(file=file)
