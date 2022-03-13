@@ -87,7 +87,7 @@ async def on_member_join (member):
     await channel.send( embed = discord.Embed( description = f'```Пользователь {member.name}, присоединился к нам!```', color = 0x2D3136))
 '''
 
-@bot.event
+@client.event
 async def on_member_join(member):
 
   #add the channel id in which you want to send the card
@@ -130,7 +130,7 @@ async def on_member_join(member):
   #for sending the card
   await channel.send(file=file)
 
-@bot.event
+@client.event
 async def on_member_remove(member):
   channel = bot.get_channel(831397576107622420)
 
