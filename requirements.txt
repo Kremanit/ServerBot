@@ -11,3 +11,5 @@ youtube-dl
 PyNaCl
 easy_pil
 dismusic
+wavelink
+async-timeout
