@@ -13,4 +13,3 @@ easy_pil
 wavelink
 dismusic
 async-timeout
-python-dotenv
