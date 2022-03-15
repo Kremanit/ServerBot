@@ -10,3 +10,4 @@ requests
 youtube-dl
 PyNaCl
 easy_pil
+dismusic
