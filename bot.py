@@ -26,6 +26,12 @@ client.remove_command("help")
 extension = [
 	"cogs.giveaway",
 	"cogs.levels",
+	"cogs.checks",
+	"cogs.errors",
+	"cogs.events",
+	"cogs.music",
+	"cogs.paginator",
+	"cogs.player",
 	"jishaku"
 ]
 
@@ -148,8 +154,6 @@ client.spotify_credentials = {
     'client_id': '134be195fb734ce8b441d3ba00132b1f',
     'client_secret': 'e40cd802af494829ad86ca144fcffcf9'
 }
-
-client.load_extension('dismusic')
 
 
 # Clear message
