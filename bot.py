@@ -31,6 +31,7 @@ extension = [
 if __name__ == '__main__':
 	for extension in extension:
 		client.load_extension(extension)
+		client.load_extension(dismusic)
 
 @client.event
 async def on_ready():
@@ -416,5 +417,4 @@ async def on_command_error( ctx, error ):
 
 
 token = os.environ.get('BOT_TOKEN')
-client.load_extension('dismusic')
 client.run(str(token))
