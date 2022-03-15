@@ -31,7 +31,6 @@ extension = [
 if __name__ == '__main__':
 	for extension in extension:
 		client.load_extension(extension)
-		client.load_extension(dismusic)
 
 @client.event
 async def on_ready():
@@ -142,6 +141,14 @@ client.lavalink_nodes = [
     {"host": "losingtime.dpaste.org", "port": 2124, "password": "SleepingOnTrains"},
     # Can have multiple nodes here
 ]
+
+# If you want to use spotify search
+client.spotify_credentials = {
+    'client_id': '134be195fb734ce8b441d3ba00132b1f',
+    'client_secret': 'e40cd802af494829ad86ca144fcffcf9'
+}
+
+client.load_extension('dismusic')
 
 
 # Clear message
