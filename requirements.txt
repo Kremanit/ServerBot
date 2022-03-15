@@ -14,4 +14,3 @@ wavelink
 dismusic
 async-timeout
 python-dotenv
-dotenv
