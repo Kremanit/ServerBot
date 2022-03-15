@@ -136,8 +136,11 @@ async def on_member_remove(member):
 
   await channel.send(f"{member.name} выписан из Test ")
 
-
-
+#MUSIC
+client.lavalink_nodes = [
+    {"host": "losingtime.dpaste.org", "port": 2124, "password": "SleepingOnTrains"},
+    # Can have multiple nodes here
+]
 
 
 # Clear message
@@ -411,7 +414,7 @@ async def on_command_error( ctx, error ):
 	pass
 
 
-#client.run (settings['TOKEN'])
-token = os.environ.get('BOT_TOKEN')
 
+token = os.environ.get('BOT_TOKEN')
+client.load_extension('dismusic')
 client.run(str(token))
