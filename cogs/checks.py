@@ -50,3 +50,5 @@ def voice_channel_player():
         return True
 
     return commands.check(predicate)
+def setup(bot):
+    bot.add_cog(Check(bot))
