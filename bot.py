@@ -27,7 +27,6 @@ client.remove_command("help")
 extension = [
 	"cogs.giveaway",
 	"cogs.levels",
-	"cogs.errors",
 	"cogs.events",
 	"cogs.music",
 	"cogs.paginator",
