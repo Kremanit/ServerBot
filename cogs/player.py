@@ -109,3 +109,6 @@ class DisPlayer(Player):
             return await self.bound_channel.send(embed=embed)
 
         await ctx.send(embed=embed)
+
+def setup(bot):
+    bot.add_cog(Player(bot))
