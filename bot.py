@@ -41,27 +41,27 @@ async def on_ready():
 
 	await client.change_presence( status = discord.Status.idle, activity=discord.Streaming(name=f';help', url='https://www.twitch.tv/kr3manit'))
 
-'''
-@client.command(aliases = ['Help', 'help'])
-async def __help ( ctx ):
+
+@client.command( pass_context = True )
+async def help ( ctx ):
     emb = discord.Embed( title = 'ДОСТУПНЫЕ КОМАНДЫ:', description = 'ВНИМАНИЕ! Бот ещё в разработке!', colour = discord.Color.orange () ) 
     # title - Жирный крупный текст (Заголовок) | description - Текст под заголовком | colour - Цвет полоски
 
     emb.set_author( name = ctx.author.name, icon_url = ctx.author.avatar_url )
     # Отображает: ctx.author.name - Имя отправителя, ctx.author.avatar_url - Аватар отправителя
-    emb.add_field( name = 'Информация', value = f'`{prefix}help` `{prefix}time` `{prefix}сервер` `{prefix}info` `{prefix}авторы` ', inline=False )
+    emb.add_field( name = 'Информация', value = f'`{prefix}time` `{prefix}info` `{prefix}авторы` ', inline=False )
     # emb.add_field( name = 'Модерирование', value = f'`{prefix}mute` `{prefix}размут` `{prefix}ban` `{prefix}kick` `{prefix}clear` ', inline=False )
     # Отображаемый блок текста. name - Жирный крупный текст | value - обычный текст под "name" | inline = True - Блоки текста будут в одну строку (https://prnt.sc/uogw2x) / inline = False - Блоки текста будут один под другим (https://prnt.sc/uogx3t)
     emb.set_thumbnail(url = client.user.avatar_url)
     # emb.set_thumbnail - Добавляет картинку около текста (Например: emb.set_thumbnail(url = "https://icons.iconarchive.com/icons/elegantthemes/beautiful-flat-one-color/128/unlocked-icon.png") (NOAD) добавит картинку замка (https://prnt.sc/uogztb)) | client.user.avatar_url - Отображает аватарку бота
-    emb.set_footer( icon_url = client.user.avatar_url, text = f'{client.user.name} © Copyright 2021 | Все права защищены' )
+    emb.set_footer( icon_url = client.user.avatar_url, text = f'{client.user.name} © Copyright 2022 | Все права защищены' )
     # emb.set_thumbnail - Добавляет картинку под текстом | client.user.avatar_url - Аватарка бота | ctx.guild.name - Имя сервера
 
     await ctx.send ( embed = emb)
 
     print( f'[Logs:info] Справка по командам была успешно выведена | {prefix}help ' )
-'''
 
+'''
 #Command help
 @client.command( pass_context = True )
 
@@ -89,7 +89,7 @@ async def on_member_join (member):
     print ('user join the servers')
     await member.add_roles( role )
     await channel.send( embed = discord.Embed( description = f'```Пользователь {member.name}, присоединился к нам!```', color = 0x2D3136))
-'''
+
 
 @client.event
 async def on_member_join(member):
@@ -241,15 +241,15 @@ async def info(ctx,member:discord.Member = None, guild: discord.Guild = None):
 
 		t = ctx.message.author.status
 		if t == discord.Status.offline:
-			d = "⚪Не в сети"
+		    d = "<:offline:885956377296666654>  Не в сети"
 
 		t = ctx.message.author.status
 		if t == discord.Status.idle:
-		    d = "🟠Не активен"
+		    d = "<:idle:885956376910766102>  Не активен"
 
 		t = ctx.message.author.status
 		if t == discord.Status.dnd:
-		    d = "🔴Не беспокоить"
+		    d = "<:dnd:885956377284067368> Не беспокоить"
 
 		emb.add_field(name="Активность:", value=d,inline=False)
 		emb.add_field(name="Статус:", value=ctx.message.author.activity,inline=False)
