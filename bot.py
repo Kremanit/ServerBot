@@ -49,8 +49,8 @@ async def help ( ctx ):
 
     emb.set_author( name = ctx.author.name, icon_url = ctx.author.avatar_url )
     # Отображает: ctx.author.name - Имя отправителя, ctx.author.avatar_url - Аватар отправителя
-    emb.add_field( name = 'Информация', value = f'`{prefix}time` `{prefix}info` `{prefix}авторы` ', inline=False )
-    # emb.add_field( name = 'Модерирование', value = f'`{prefix}mute` `{prefix}размут` `{prefix}ban` `{prefix}kick` `{prefix}clear` ', inline=False )
+    emb.add_field( name = 'Информация', value = f'`{prefix}time` `{prefix}info` `{prefix}rank` `{prefix}leaderboard` ', inline=False )
+    emb.add_field( name = 'Музыка', value = f'`{prefix}play` `{prefix}pause` `{prefix}resume` `{prefix}seek` `{prefix}queue` `{prefix}volume` `{prefix}loop` ', inline=False )
     # Отображаемый блок текста. name - Жирный крупный текст | value - обычный текст под "name" | inline = True - Блоки текста будут в одну строку (https://prnt.sc/uogw2x) / inline = False - Блоки текста будут один под другим (https://prnt.sc/uogx3t)
     emb.set_thumbnail(url = client.user.avatar_url)
     # emb.set_thumbnail - Добавляет картинку около текста (Например: emb.set_thumbnail(url = "https://icons.iconarchive.com/icons/elegantthemes/beautiful-flat-one-color/128/unlocked-icon.png") (NOAD) добавит картинку замка (https://prnt.sc/uogztb)) | client.user.avatar_url - Отображает аватарку бота
