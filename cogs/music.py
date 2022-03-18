@@ -274,3 +274,6 @@ class Music(commands.Cog):
         """Currently playing song information"""
         player: DisPlayer = ctx.voice_client
         await player.invoke_player(ctx)
+
+def setup(bot):
+    bot.add_cog(Music(bot))
