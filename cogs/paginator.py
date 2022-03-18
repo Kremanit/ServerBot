@@ -94,5 +94,3 @@ class Paginator:
 
             await msg.remove_reaction(reaction.emoji, user)
 
-def setup(bot):
-    bot.add_cog(Paginator(bot))
