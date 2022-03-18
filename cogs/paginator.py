@@ -93,3 +93,6 @@ class Paginator:
                 current_page = min(total_pages - 1, current_page + 1)
 
             await msg.remove_reaction(reaction.emoji, user)
+
+def setup(bot):
+    bot.add_cog(Paginator(bot))
