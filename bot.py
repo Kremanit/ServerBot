@@ -141,7 +141,7 @@ async def on_member_remove(member):
 
 #MUSIC
 client.lavalink_nodes = [
-    {"host": "node5.lavalink.trgop.gq", "port": 443, "password": "htandsm", "https": True},
+    {"host": "lavalink.islantay.tk", "port": 8880, "password": "waifufufufu"}
     # Can have multiple nodes here
 ]
 
