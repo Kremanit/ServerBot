@@ -41,6 +41,16 @@ async def on_ready():
 
 	await client.change_presence( status = discord.Status.idle, activity=discord.Streaming(name=f';help', url='https://www.twitch.tv/kr3manit'))
 
+#MUSIC
+client.lavalink_nodes = [
+    {"host": "losingtime.dpaste.org", "port": 2124, "password": "SleepingOnTrains"},
+    # Can have multiple nodes here
+]
+
+client.spotify_credentials = {
+    'client_id': '134be195fb734ce8b441d3ba00132b1f',
+    'client_secret': 'e40cd802af494829ad86ca144fcffcf9'
+}
 
 @client.command( pass_context = True )
 async def help ( ctx ):
@@ -139,17 +149,7 @@ async def on_member_remove(member):
 
   await channel.send(f"{member.name} выписан из Test ")
 
-#MUSIC
-client.lavalink_nodes = [
-    {"host": "lavalink.islantay.tk", "port": 8880, "password": "waifufufufu"},
-    # Can have multiple nodes here
-]
 
-# If you want to use spotify search
-client.spotify_credentials = {
-    'client_id': '134be195fb734ce8b441d3ba00132b1f',
-    'client_secret': 'e40cd802af494829ad86ca144fcffcf9'
-}
 
 
 # Clear message
