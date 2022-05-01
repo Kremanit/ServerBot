@@ -43,7 +43,7 @@ async def on_ready():
 
 #MUSIC
 client.lavalink_nodes = [
-    {"host": "lavalink.mariliun.ml", "port": 443, "password": "lavaliun", "https": True},
+    {"host": "lavalink.islantay.tk", "port": 8880, "password": "waifufufufu"},
     # Can have multiple nodes here
 ]
 
