@@ -43,7 +43,7 @@ async def on_ready():
 
 #MUSIC
 client.lavalink_nodes = [
-    {"host": "lavalink.islantay.tk", "port": 8880, "password": "waifufufufu"},
+    {"host": "lava.link", "port": 80, "password": "dismusic"},
     # Can have multiple nodes here
 ]
 
@@ -423,6 +423,4 @@ async def on_command_error( ctx, error ):
 	pass
 
 
-
-token = os.environ.get('BOT_TOKEN')
-client.run(str(token))
+client.run(settings['TOKEN'])
